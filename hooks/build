@@ -1,0 +1,11 @@
+#!/bin/bash
+
+REPO=${DOCKER_REPO:-"astlab/launchpad"}
+TAG=${SOURCE_BRANCH:-$(date '+%y.%m')}
+
+while read -r TARGET; do
+	if [[ -z "$TARGET" || "$TARGET" =~ ^\#.* ]]; then
+		continue
+	fi
+	docker build -f ./$TARGET/Dockerfile -t $REPO:$TARGET-$TAG ./$TARGET/
+done < "release/$TAG"
