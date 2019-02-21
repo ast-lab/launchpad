@@ -1,0 +1,8 @@
+# golang: aergo
+golang
+
+# pytest: aergo-ci/testpy
+pytest
+
+# maven: aergo-ci/testjava
+maven
