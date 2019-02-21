@@ -14,3 +14,7 @@
 
 `pytest-latest`, `pytest-19.02`
 
+
+## jenkins
+
+`jenkins-latest`, `jenkins-19.02`, `jenkins-19.02.1`
