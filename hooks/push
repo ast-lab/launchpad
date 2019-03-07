@@ -1,25 +1,25 @@
 #!/bin/bash
 
-DOCKER="docker"
-if [ "$DEBUG" == "1" ]; then
-	DOCKER="echo docker"
-fi
-
 REPO=${DOCKER_REPO:-"astlab/launchpad"}
 TAG=${SOURCE_BRANCH:-$(date '+%y.%m')}
 
+# push tags
 while read -r TARGET; do
+	# skip comments
 	if [[ -z "$TARGET" || "$TARGET" =~ ^\#.* ]]; then
 		continue
 	fi
-	$DOCKER push $REPO:$TARGET-$TAG
+	# target tag
+	docker push $REPO:$TARGET-$TAG
 	if [[ "$TAG" =~ ^([0-9]+)(\.[0-9]+){1,2}$ ]]; then
+		# major tag
 		if [[ "$TAG" =~ ^([0-9]+)(\.[0-9]+){2}$ ]]; then
 			MAJOR=$(echo "$TAG" | sed -r 's/(\.[0-9]+)$//')
-			$DOCKER tag  $REPO:$TARGET-$TAG $REPO:$TARGET-$MAJOR
-			$DOCKER push $REPO:$TARGET-$MAJOR
+			docker tag  $REPO:$TARGET-$TAG $REPO:$TARGET-$MAJOR
+			docker push $REPO:$TARGET-$MAJOR
 		fi
-		$DOCKER tag  $REPO:$TARGET-$TAG $REPO:$TARGET-latest
-		$DOCKER push $REPO:$TARGET-latest
+		# latest tag
+		docker tag  $REPO:$TARGET-$TAG $REPO:$TARGET-latest
+		docker push $REPO:$TARGET-latest
 	fi
 done < "release/$TAG"

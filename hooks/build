@@ -1,16 +1,28 @@
 #!/bin/bash
 
-DOCKER="docker"
-if [ "$DEBUG" == "1" ]; then
-	DOCKER="echo docker"
-fi
-
 REPO=${DOCKER_REPO:-"astlab/launchpad"}
 TAG=${SOURCE_BRANCH:-$(date '+%y.%m')}
 
+# pretest
 while read -r TARGET; do
+	# skip comments
 	if [[ -z "$TARGET" || "$TARGET" =~ ^\#.* ]]; then
 		continue
 	fi
-	$DOCKER build -f ./$TARGET/Dockerfile -t $REPO:$TARGET-$TAG ./$TARGET/
+	# check dockerfile
+	PATH="./$TARGET/Dockerfile"
+	if [ ! -f "$PATH" ]; then
+		echo "Dockerfile not found at: $PATH"
+		exit 1
+	fi
+done < "release/$TAG"
+
+# build
+while read -r TARGET; do
+	# skip comments
+	if [[ -z "$TARGET" || "$TARGET" =~ ^\#.* ]]; then
+		continue
+	fi
+	# build
+	docker build -f ./$TARGET/Dockerfile -t $REPO:$TARGET-$TAG ./$TARGET/
 done < "release/$TAG"
