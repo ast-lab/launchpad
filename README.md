@@ -2,27 +2,27 @@
 
 ## golang [&rarr;][golang.dockerfile]
 
-[golang.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.02/golang/Dockerfile
+[golang.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.04.0/golang/Dockerfile
 
-`golang-latest`, `golang-19.02`
+`golang-latest`, `golang-19.04`
 
 
 ## maven [&rarr;][maven.dockerfile]
 
-[maven.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.02/maven/Dockerfile
+[maven.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.04.0/maven/Dockerfile
 
-`maven-latest`, `maven-19.02`
+`maven-latest`, `maven-19.04`
 
 
 ## pytest [&rarr;][pytest.dockerfile]
 
-[pytest.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.02/pytest/Dockerfile
+[pytest.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.04.0/pytest/Dockerfile
 
-`pytest-latest`, `pytest-19.02`
+`pytest-latest`, `pytest-19.04`
 
 
 ## jenkins [&rarr;][jenkins.dockerfile]
 
-[jenkins.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.02.1/jenkins/Dockerfile
+[jenkins.dockerfile]: https://github.com/ast-lab/launchpad/blob/19.04.0/jenkins/Dockerfile
 
-`jenkins-latest`, `jenkins-19.02`, `jenkins-19.02.1`
+`jenkins-latest`, `jenkins-19.04`
