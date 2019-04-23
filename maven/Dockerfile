@@ -1,4 +1,8 @@
+FROM docker/compose:1.23.2 as compose
 FROM maven:3.6-jdk-8
+
+COPY --from=compose /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=compose /usr/local/bin/docker-compose /usr/local/bin/docker-compose
 
 WORKDIR /app
 
