@@ -10,9 +10,9 @@ while read -r TARGET; do
 		continue
 	fi
 	# check dockerfile
-	PATH="./$TARGET/Dockerfile"
-	if [ ! -f "$PATH" ]; then
-		echo "Dockerfile not found at: $PATH"
+	DOCKERFILE="./$TARGET/Dockerfile"
+	if [ ! -f "$DOCKERFILE" ]; then
+		echo "Dockerfile not found at: $DOCKERFILE"
 		exit 1
 	fi
 done < "release/$TAG"
